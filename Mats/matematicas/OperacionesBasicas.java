@@ -100,15 +100,15 @@ public class OperacionesBasicas{
    * @return El resultado de sumar b veces a
    */
   public static int multiplica(int a, int b){
-      return (int)multiplica((long)a, (long)b);
-  }
-  public static long multiplica(long a, long b){
+    return (int)multiplica((long)a, (long)b);
+}
+public static long multiplica(long a, long b){
     long mult=0;
     for(long i=0; esMenor(i,b); i=inc(i)){
        mult=suma(mult,a);
     }
     return mult;
-  }
+}
    /** divide
    * Devuelve el cociente de la división entera de dos números usando restas
    * <p>
@@ -121,7 +121,12 @@ public class OperacionesBasicas{
    return (int)divide((long)a,(long)b);
   }
   public static long divide(long a, long b){
-   return a/b;
+   long div=0;
+   while(esMayor(a, b)||esIgual(a, b)){
+      div=inc(div);
+      a=resta(a, b);
+   }
+   return div;
   }
    /** resto
    * Devuelve el resto de la división entera
@@ -134,7 +139,7 @@ public class OperacionesBasicas{
       return (int)resto((long)a,(long)b);
   }
   public static long resto(long a, long b){
-      return a%b;
+      return resta(a, multiplica(divide(a,b),b));
   }
    /** potencia
    * Devuelve la potencia de un número elevado a otro
@@ -148,8 +153,12 @@ public class OperacionesBasicas{
    return (int)potencia((long)base,(long)exponente);
   }
   public static long potencia(long base, long exponente){
-      return (long)Math.pow(base,exponente);
-  }
+   long pot=1;
+   for(long i=0; esMenor(i,exponente);i=inc(i)){
+      pot=multiplica(pot, base);
+   }
+   return pot;
+}
    /** cuadrado
    * Devuelve la potencia de un número elevado a 2
    * <p>
