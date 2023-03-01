@@ -100,15 +100,15 @@ public class OperacionesBasicas{
    * @return El resultado de sumar b veces a
    */
   public static int multiplica(int a, int b){
-      return (int)multiplica((long)a, (long)b);
-  }
-  public static long multiplica(long a, long b){
+    return (int)multiplica((long)a, (long)b);
+}
+public static long multiplica(long a, long b){
     long mult=0;
     for(long i=0; esMenor(i,b); i=inc(i)){
        mult=suma(mult,a);
     }
     return mult;
-  }
+}
    /** divide
    * Devuelve el cociente de la división entera de dos números usando restas
    * <p>
@@ -182,24 +182,24 @@ public class OperacionesBasicas{
    * @param b valor con el que comprobar si a es múltiplo de él
    * @return true si a es múltiplo y false en caso contrario
    */
-  public static boolean esMultiplo(int a, int b){
-      return esMultiplo((long)a,(long)b);
-  }
-  public static boolean esMultiplo(long a, long b){
-      return a%b==0;
-  }
-   /** esDivisor
-   * Indica si un número es divisor de otro dado
-   * <p>
-   * @param a valor a comprobar si es divisor
-   * @param b valor con el que comprobar si a es divisor de él
-   * @return true si a es divisor y false en caso contrario
-   */
-  public static boolean esDivisor(int a, int b){
-      return esDivisor((long)a, (long)b);
-  }
-  public static boolean esDivisor(long a, long b){
-      return b%a==0;
-  }
+public static boolean esMultiplo(int a, int b){
+    return esMultiplo((long)a,(long)b);
+}
+public static boolean esMultiplo(long a, long b){
+    return esIgual(resto(a, b), 0);
+}
+ /** esDivisor
+ * Indica si un número es divisor de otro dado
+ * <p>
+ * @param a valor a comprobar si es divisor
+ * @param b valor con el que comprobar si a es divisor de él
+ * @return true si a es divisor y false en caso contrario
+ */
+public static boolean esDivisor(int a, int b){
+    return esDivisor((long)a, (long)b);
+}
+public static boolean esDivisor(long a, long b){
+    return esMultiplo(b,a);
+}
 
 }
